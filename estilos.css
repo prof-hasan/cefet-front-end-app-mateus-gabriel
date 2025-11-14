@@ -1,0 +1,111 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 20;
+    box-sizing: border-box;
+}
+.principal{
+    width: 90%;
+    height: 1000px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 50px solid #3cd641;
+    margin: 0 auto; 
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient( rgb(120, 120, 249), rgb(175, 220, 254));
+}
+.barreiras{
+    position: absolute;
+    bottom: -30px;
+    width: 180px;
+    animation: barreiras 4s infinite linear;
+}
+@keyframes barreiras {
+    from {
+        right: -150px;
+    }
+    to {
+        right: 100%;
+    }
+}
+#passaro{
+    position: absolute;
+    bottom: 350px;
+    width: 400px;
+    height: 400px;
+    animation: voo 25s infinite linear;
+}
+@keyframes voo{ 
+    from{
+        right: -500px;
+    }
+    to{
+        right: 200%;
+    }
+}
+#arvore{
+    position: absolute;
+    bottom: -20px;
+    width: 60px;
+    height: 600px;
+    animation: arvore-animaçao 100s infinite linear;
+}
+
+@keyframes arvore-animaçao{ 
+    from{
+        right: -10000px;
+    }
+    to{
+        right: 2000%;
+    }
+}
+.pessoa{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    bottom: 0;
+}
+.pulando{
+     animation: pulo-pessoa 800ms ease-out;
+}
+@keyframes pulo-pessoa {
+    0% {
+        bottom: 0;
+    }
+    20% {
+        bottom: 400px;
+    }
+    90%{
+        bottom:  400px;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+#timer {
+  position: absolute;  
+  font-family:"Quantico", sans-serif;
+  font-size: 20px;      
+  font-weight: bold;   
+  color: black;        
+  background: rgba(93, 101, 255, 0.7); 
+  padding: 10px;   
+  border-radius: 10px;  
+  top: 40px;
+}
+#cone{
+    position: absolute;
+    bottom: -30px;
+    width: 200px;
+    height: 100px;
+}
+#rodape-sala-jogos{
+    background-color: black;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+}
