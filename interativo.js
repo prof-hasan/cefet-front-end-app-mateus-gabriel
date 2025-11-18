@@ -42,13 +42,7 @@ function pararTimer() {
     clearInterval(tempoInterval);
 }
 
-const imagens = [
-    "https://png.pngtree.com/png-clipart/20220123/original/pngtree-no-obstacles-png-image_7158750.png",
-    "https://kteli.com.br/wp-content/uploads/2024/01/WvtpPuFZo3uNYAP1N4Ga__1_-removebg-preview-1.png",
-    "https://images.vexels.com/media/users/3/310367/isolated/preview/86253bb46dcb99833f9d105c60830518-animal-cachorro-dourado.png",
-    "https://images.vexels.com/media/users/3/145641/isolated/preview/30bc99162bca69bdbd27451ceeef8848-ilustracao-de-pedra-da-terra.png",
-    "https://images.vexels.com/media/users/3/138146/isolated/preview/75257ee573c029365f26e6f9976497c0-bicicleta-de-montanha-subida.png"
-];
+
 let index = 0;
 setInterval(() => {
     barreiras.src = imagens[index];
@@ -91,3 +85,5 @@ document.addEventListener("keydown", (e) => {
         }
     }
 });
+
+//----------------------------------------------------

@@ -21,6 +21,7 @@
     position: absolute;
     bottom: -30px;
     width: 180px;
+    height: 400px;
     animation: barreiras 4s infinite linear;
 }
 @keyframes barreiras {
@@ -49,7 +50,7 @@
 #arvore{
     position: absolute;
     bottom: -20px;
-    width: 60px;
+    width: 200px;
     height: 600px;
     animation: arvore-animaçao 100s infinite linear;
 }
@@ -108,4 +109,26 @@
     padding-top: 1px;
     padding-bottom: 20px;
     margin-top: 50px;
+}
+
+#loja{
+    height: 50px;
+    width: 100px;
+}
+
+#configuraçoes{
+     height: 50px;
+     width: 100px;
+}
+
+body{
+    background-color: rgb(56, 55, 55);
+}
+
+#botao-corrida{
+  border-radius: 20px;
+}
+
+#botao-luta{
+    border-radius: 30px;
 }
