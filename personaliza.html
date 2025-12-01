@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINHA-CONTA</title>
+
+    <link rel="stylesheet" href="estilosPersonaliza.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Nabla&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Syne+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="LOBBY.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/182/182448.png" alt="loja" id="botaoSair">
+        </a>
+
+     <h1>Personalize seu personagem</h1>
+
+    <article id="caixaPersonaliza">
+     <section id="escolhaCorRosto">
+     <div>
+        <label>Humor:</label>
+        <select id="rosto">
+        <option value="feliz">FELIZ</option>
+        <option value="triste">TRISTE</option>
+        <option value="apaixonado">PAIXAO</option>
+        </select>
+     </div>
+
+     <div>
+        <label>Cor</label>
+        <input type="color" id="cor" value="#00ffff">
+     </div>
+     </section>
+
+     <canvas id="canvas" width="200" height="200"></canvas>
+     </article>
+
+    <button id="salvar">Salvar</button>
+
+    <script src="personaliza.js"></script>
+</body>
+</html>

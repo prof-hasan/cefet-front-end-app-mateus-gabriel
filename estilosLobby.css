@@ -70,18 +70,18 @@ body{
     justify-content: space-between;
 }
 
-#botaoLoja{
+#botaoPersonaliza{
      width: 100px;
      position: relative;
      transition: transform 0.2s ease;
 }
-#botaoLoja:hover{
+#botaoPersonaliza:hover{
     background: linear-gradient(90deg, rgb(0, 149, 255), rgb(255, 70, 70), yellow, rgb(0, 255, 0));
     border-radius: 20px;
     transform: translateY(10px);
     box-shadow: 30px 30px 30px white;
 }
-#botaoLoja:active{
+#botaoPersonaliza:active{
      background: linear-gradient(90deg, rgb(0, 149, 255), rgb(255, 70, 70), yellow, rgb(0, 255, 0));
     border-radius: 20px;
     box-shadow: 30px 30px 30px pink;
