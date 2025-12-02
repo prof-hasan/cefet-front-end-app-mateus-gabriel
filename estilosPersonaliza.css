@@ -2,6 +2,16 @@ body{
     background-color: rgb(174, 174, 255);
 }
 
+h1::selection{
+    color: rgb(211, 248, 255);
+    background-color: rgb(143, 143, 255);
+}
+
+label::selection{
+    color: rgb(211, 248, 255);
+    background-color: rgb(143, 143, 255);
+}
+
 #salvar{
   font-family: "Audiowide", sans-serif;
   font-weight: 400;

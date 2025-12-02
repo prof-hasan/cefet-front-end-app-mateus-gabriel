@@ -5,7 +5,7 @@ html, body{
 }
 
 body{
-     background-image: url(https://gamerush.com.br/wp-content/uploads/2015/12/CenarioBisonAlpha2.gif);
+    background-image: url(https://gamerush.com.br/wp-content/uploads/2015/12/CenarioBisonAlpha2.gif);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -75,6 +75,22 @@ body{
 
 #configuraçoes{
      width: 100px;
+}
+
+#nomeJogo{
+    display: block;
+    position: absolute;
+    left: 35%;
+    font-size: 100px;
+    text-shadow: 1px 0.5px 0.5px rgb(0, 255, 242);
+    font-family: "Knewave", system-ui;
+}
+#nomeJogo:hover{
+    text-shadow: 1px 1px 1px gray;
+}   
+#nomeJogo::selection{
+    color: rgb(211, 248, 255);
+    background-color: rgb(143, 143, 255);
 }
 
 

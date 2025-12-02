@@ -62,6 +62,7 @@ loop();
 
 //-----------------------------------tempo
 
+let dezSEl = document.querySelector('#dezS');
 let imagemFundo = document.querySelector('.principal');
 
  let nomeDaImagem = [
@@ -74,6 +75,10 @@ let imagemFundo = document.querySelector('.principal');
   imagemFundo.style.backgroundImage = `url(${caminhoDaImagem})`;
 }
 
+function atualizaFundoConquista(){
+    dezSEl.style.backgroundColor = 'green';
+}
+
 function iniciarTimer() {
     tempo = 0;
     document.getElementById("timer").textContent = `Tempo: 0s`;
@@ -83,7 +88,9 @@ function iniciarTimer() {
         document.getElementById("timer").textContent = `Tempo: ${tempo}s`;
 
         if (tempo === 5) document.documentElement.style.setProperty("--velocidade", "3.5s");
-        if (tempo === 10) document.documentElement.style.setProperty("--velocidade", "3s");
+        if (tempo === 10){ document.documentElement.style.setProperty("--velocidade", "3s")
+            atualizaFundoConquista();
+        }
         if (tempo === 15) document.documentElement.style.setProperty("--velocidade", "2.5s");
         if (tempo === 20){
             document.documentElement.style.setProperty("--velocidade", "2s");
