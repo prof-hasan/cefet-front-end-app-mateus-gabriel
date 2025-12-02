@@ -12,52 +12,38 @@ body{
 }
 
 #botoes-jogos{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     margin-top: 250px;
-    display: 0 auto;
+    display: block;
     z-index: 1;
 }
 
-#botaoLuta{
-    width: 320px;
-    position: relative;
-    transition: transform 0.5s ease;
-    background-color: #00eeffdc;
+#botaoConquistas{
+    width: 70px;
+    position: fixed;
+    top: 140px;   
+    left: 10px;
+    transition: transform 0.2s ease;
+    background-color: #ffdcaa8d;
     border-radius: 50px;
     box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
-}
-#botaoLuta:hover{
-    transform: translateY(-30px);
-    background-color: rgb(64, 143, 255);
-}
-
-#botaoConquistas{
-    width: 80px;
-    position: relative;
-    transition: transform 0.2s ease;
-    top: 150px;
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
-    display: block;
-    padding: 40px;
-    box-sizing: content-box;
-    border-radius: 40px;
-    background-color: rgba(0, 229, 255, 0.944);
+    padding: 10px;
 }
 #botaoConquistas:hover{
-    transform: translateY(-25px);
-    background-color: rgb(64, 143, 255);
+    transform: translateY(15px);
+    background-color: rgb(255, 212, 133);
 }
 
 
 #botaoCorrida{
     width: 300px;
-    position: relative;
+    position: fixed;
     transition: transform 0.2s ease;
     background-color: #00eeffdc;
     border-radius: 50px;
     box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
+    bottom: 20px;  
+    right: 20px; 
+    z-index: 100;
 }
 #botaoCorrida:hover{
     transform: translateY(-30px);
@@ -92,28 +78,26 @@ body{
 }
 
 
-/*-----------------------------------------*/
+/*---------------MENU--------------------------*/
 #menu-configuracoes{
     position: fixed;
     top: 0;
-    right: -400px;
+    right: -250px;
     width: 200px;
-    height: 500px;
+    height: 698px;
     background-color: rgba(180, 162, 162, 0.955);
     box-shadow: -4px 0 10px gray;
     padding: 20px;
     transition: right 0.5s ease;
-    padding-top: 100px;
-    padding-right: 100px;
     font-family: "Syne Mono", monospace;
     text-align: center;
+    z-index: 9999;
+    padding: 120px 20px 20px 20px;
 }
 
 body.menu-visivel #menu-configuracoes{
-    right: 0;
-    height: 618px;
-    width: 200px;
-    z-index: 2;
+    right: 0px;
+    width: 300px;
 }
 
 #alterna-menu {
@@ -126,6 +110,7 @@ body.menu-visivel #menu-configuracoes{
   font-size: 28px;
   border-radius: 10px;
   transition: transform 0.5s ease;
+  z-index: 10000;
 }
 #alterna-menu:hover{
     background-color: gold;
@@ -162,7 +147,7 @@ body.menu-visivel #menu-configuracoes{
 .opcoes-menu{
     padding-top: 50px;
     padding-bottom: 50px;
-    font-size: 32px;  
+    font-size: 32px;   
 }
 
 .opcoes-menu label{

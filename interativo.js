@@ -1,9 +1,66 @@
-const personagem = document.querySelector(".pessoa");
 const inimigoEl = document.querySelector(".inimigo");
+
+//-----------------------------------------------------personagem
+const canvasPlayer = document.getElementById("player");
+const ctxPlayer = canvasPlayer.getContext("2d");
 
 let tempo = 0;
 let tempoInterval;
 let jogoAtivo = false; 
+
+function desenharPlayer() {
+    const skin = JSON.parse(localStorage.getItem('personagem'));
+    ctxPlayer.clearRect(0, 0, canvasPlayer.width, canvasPlayer.height);
+
+    if (!skin) return;
+
+//------------------------------------------------------Corpo
+    ctxPlayer.fillStyle = skin.cor;
+    ctxPlayer.fillRect(50, 100, 100, 100);
+
+    function desenharFeliz() {
+        ctxPlayer.fillStyle = 'black';
+        ctxPlayer.beginPath(); ctxPlayer.arc(85, 130, 5, 0, Math.PI * 2); ctxPlayer.fill();
+        ctxPlayer.beginPath(); ctxPlayer.arc(115, 130, 5, 0, Math.PI * 2); ctxPlayer.fill();
+        ctxPlayer.beginPath(); ctxPlayer.moveTo(85, 150);
+        ctxPlayer.quadraticCurveTo(100, 165, 115, 150);
+        ctxPlayer.stroke();
+    }
+
+    function desenharTriste() {
+        ctxPlayer.fillStyle = 'black';
+        ctxPlayer.beginPath(); ctxPlayer.arc(85, 130, 5, 0, Math.PI * 2); ctxPlayer.fill();
+        ctxPlayer.beginPath(); ctxPlayer.arc(115, 130, 5, 0, Math.PI * 2); ctxPlayer.fill();
+        ctxPlayer.beginPath(); ctxPlayer.moveTo(85, 165);
+        ctxPlayer.quadraticCurveTo(100, 150, 115, 165);
+        ctxPlayer.stroke();
+    }
+
+    function desenharApaixonado() {
+        ctxPlayer.fillStyle = 'red';
+        ctxPlayer.beginPath(); ctxPlayer.arc(85, 130, 5, 0, Math.PI * 2); ctxPlayer.fill();
+        ctxPlayer.beginPath(); ctxPlayer.arc(115, 130, 5, 0, Math.PI * 2); ctxPlayer.fill();
+        ctxPlayer.beginPath(); ctxPlayer.moveTo(90, 150);
+        ctxPlayer.quadraticCurveTo(100, 165, 110, 150);
+        ctxPlayer.stroke();
+    }
+
+    if (skin.rosto === "feliz") desenharFeliz();
+    if (skin.rosto === "triste") desenharTriste();
+    if (skin.rosto === "apaixonado") desenharApaixonado();
+}
+
+
+let descendo = false;
+
+//--------------------------------
+function loop() {
+    desenharPlayer();
+    requestAnimationFrame(loop);
+}
+loop();
+
+//-----------------------------------tempo
 
 let imagemFundo = document.querySelector('.principal');
 
@@ -55,64 +112,53 @@ function pararTimer() {
     clearInterval(tempoInterval);
 }
 
-const loopColisao = setInterval(() => {
+//---------------------------morte
+setInterval(() => {
     if (!jogoAtivo) return;
 
-    const inimigoElPosition = inimigoEl.offsetLeft;
-    const pessoaPosition = +window.getComputedStyle(personagem).bottom.replace('px', '');
+    const inimigoLeft = inimigoEl.offsetLeft;
 
-    if (inimigoElPosition <= 70 && inimigoElPosition > 0 && pessoaPosition < 80) {
-        inimigoEl.style.animation = 'none';
-        personagem.style.animation = 'none';
-        personagem.src = 'https://png.pngtree.com/png-clipart/20230914/original/pngtree-tombstone-clipart-cartoon-grave-with-a-skull-and-grass-vector-png-image_11091955.png';
-        personagem.style.width = '8%';
-
+    if (inimigoLeft <= 150 && inimigoLeft > 50 && alturaPulo < 30) {
         jogoAtivo = false;
         pararTimer();
-        alert(`Você sobreviveu por ${tempo} segundos!`);
-
-        setTimeout(() => location.reload(), 3000);
+        alert(`Você sobreviveu ${tempo} segundos!`);
+        location.reload();
     }
+
 }, 10);
 
+//----------------------------------------------------pulo
 document.addEventListener("keydown", (e) => {
     if (e.code === "Space") {
+
         if (!jogoAtivo) {
             jogoAtivo = true;
-            inimigoEl.style.animation = 'inimigo var(--velocidade) linear infinite';
             iniciarTimer();
         }
 
-        if (!personagem.classList.contains("pulando")) {
-            personagem.classList.add("pulando");
+        const player = document.getElementById("player");
 
-            setTimeout(() => personagem.classList.remove("pulando"), 800);
+        if (!player.classList.contains("pulando")) {
+            player.classList.add("pulando");
+
+            setTimeout(() => {
+                player.classList.remove("pulando");
+            }, 800); 
         }
     }
 });
 
-//----------------------------------------------------
+setInterval(() => {
+    if (!jogoAtivo) return;
 
+    const inimigoLeft = inimigoEl.offsetLeft;
+    const playerBottom = parseInt(getComputedStyle(canvasPlayer).bottom);
 
-let engrenagem = document.querySelector('#alterna-menu');
-let bodyEl = document.querySelector('body');
-
-engrenagem.addEventListener('click', function(){
-    bodyEl.classList.toggle('menu-visivel');
-});
-
-
-/*-----------------MUSICA------------------------*/
-let somEl = document.querySelector('#botaoAudio');
-let musicaEl = document.querySelector('#musica');
-
-somEl.addEventListener('click', function(){
-    somEl.classList.toggle('selecionado');
-
-    if(musicaEl.paused){
-        musicaEl.play();
-    }else{
-        musicaEl.pause();
+    if (inimigoLeft <= 60 && inimigoLeft > 50 && playerBottom < 100) {
+        jogoAtivo = false;
+        pararTimer();
+        alert(`Você sobreviveu ${tempo} segundos!`);
+        location.reload();
     }
-});
- 
+
+}, 10); 
