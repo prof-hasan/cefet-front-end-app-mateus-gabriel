@@ -75,10 +75,6 @@ let imagemFundo = document.querySelector('.principal');
   imagemFundo.style.backgroundImage = `url(${caminhoDaImagem})`;
 }
 
-function atualizaFundoConquista(){
-    dezSEl.style.backgroundColor = 'green';
-}
-
 function iniciarTimer() {
     tempo = 0;
     document.getElementById("timer").textContent = `Tempo: 0s`;
@@ -88,8 +84,9 @@ function iniciarTimer() {
         document.getElementById("timer").textContent = `Tempo: ${tempo}s`;
 
         if (tempo === 5) document.documentElement.style.setProperty("--velocidade", "3.5s");
-        if (tempo === 10){ document.documentElement.style.setProperty("--velocidade", "3s")
-            atualizaFundoConquista();
+        if (tempo === 10){ 
+            document.documentElement.style.setProperty("--velocidade", "3s");
+            dezSEl.style.backgroundColor = 'green';
         }
         if (tempo === 15) document.documentElement.style.setProperty("--velocidade", "2.5s");
         if (tempo === 20){
@@ -120,6 +117,33 @@ function pararTimer() {
 }
 
 //---------------------------morte
+function morreu(){
+    document.body.innerHTML = `<p>Você sobreviveu ${tempo} segundos!</p>`;
+    document.body.style.display = "block";
+    document.body.style.textAlign = "center";
+    document.body.style.marginTop = "200px";
+    document.body.style.fontSize = "100px";
+    document.body.style.borderRadius = "5px";
+    document.body.style.color = "gold";
+    document.body.style.textShadow = "6px 5px 5px black";
+    
+    const botao = document.createElement("button");
+    botao.textContent = "Voltar";
+    botao.style.fontSize = "100px";
+    botao.style.backgroundColor =  "gray";
+    botao.style.backgroundColor =  "gold";
+    botao.style.marginTop =  "250px";
+    botao.style.borderRadius = "20px";
+    botao.style.padding = "10px 20px";
+    botao.style.cursor = "pointer";
+
+    document.body.appendChild(botao);
+
+    botao.addEventListener("click", function(){
+        location.href = "lobby.html";
+    });
+}
+
 setInterval(() => {
     if (!jogoAtivo) return;
 
@@ -128,13 +152,13 @@ setInterval(() => {
     if (inimigoLeft <= 150 && inimigoLeft > 50 && alturaPulo < 30) {
         jogoAtivo = false;
         pararTimer();
-        alert(`Você sobreviveu ${tempo} segundos!`);
-        location.reload();
+        jogoAtivo = false;
+
+        morreu();
     }
 
 }, 10);
 
-//----------------------------------------------------pulo
 document.addEventListener("keydown", (e) => {
     if (e.code === "Space") {
 
@@ -164,8 +188,8 @@ setInterval(() => {
     if (inimigoLeft <= 60 && inimigoLeft > 50 && playerBottom < 100) {
         jogoAtivo = false;
         pararTimer();
-        alert(`Você sobreviveu ${tempo} segundos!`);
-        location.reload();
+
+        morreu();
     }
 
 }, 10); 
