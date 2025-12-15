@@ -1,0 +1,129 @@
+html{
+    height: 100vh;
+}
+
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url(https://i.pinimg.com/originals/7d/09/5a/7d095ae81e099c20e7db776ea1a6e2ea.gif);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 20;
+    box-sizing: border-box;
+}
+.principal{
+    width: 100%;
+    height: 902px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    margin: 0 auto; 
+    position: relative;
+    overflow: hidden;
+}
+
+:root{
+    --velocidade: 4s;
+}
+
+.inimigo{
+    position: absolute;
+    bottom: -30px;
+    width: 600px;
+    height: 400px;
+    animation: inimigo var(--velocidade) linear infinite;
+    will-change: transform;
+}
+@keyframes inimigo {
+    from {
+        right: -200px;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+#passaro{
+    position: absolute;
+    bottom: 500px;
+    width: 200px;
+    height: 200px;
+    animation: voo 25s infinite linear;
+}
+@keyframes voo{ 
+    from{
+        right: -500px;
+    }
+    to{
+        right: 200%;
+    }
+}
+#animal{
+    position: absolute;
+    bottom: 580px;
+    width: 100px;
+    height: 200px;
+    animation: animal-animaçao 100s infinite linear;
+    transform: scaleX(-1);
+}
+
+@keyframes animal-animaçao{ 
+    from{
+        right: -10000px;
+    }
+    to{
+        right: 2000%;
+    }
+}
+#player {
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    width: 220px;
+    height: 220px;
+    z-index: 10;
+}
+.pulando{
+     animation: puloQuadrado 800ms ease-out;
+}
+@keyframes puloQuadrado {
+    0% {
+         bottom: 0;
+         }
+    40% { 
+        bottom: 400px;
+     }
+     60%{
+        bottom: 450px;
+     }
+     80%{
+        bottom: 300px;
+     }
+    100% {
+         bottom: 0;
+         }
+}
+#timer {
+  position: absolute;  
+  font-family:"Quantico", sans-serif;
+  font-size: 20px;      
+  font-weight: bold;   
+  color: whitesmoke;  
+  background: gray; 
+  padding: 12px;   
+  border-radius: 5px;  
+  top: 200px;
+  text-shadow: 1px 1px 1px green;
+}
+#rodape-sala-jogos{
+    background-color: black;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+}

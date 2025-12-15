@@ -1,0 +1,41 @@
+#provas{
+    background-color: whitesmoke;
+}
+
+.i {
+    width: 400px; 
+    padding: 3px;
+    display: flex;
+    flex-direction: column; 
+    margin: 0 auto;
+}
+
+body{
+    text-align: center;
+}
+h1, h2{
+    font-family: "Audiowide", sans-serif;
+}
+
+h1{
+    color: rgb(37, 37, 37);
+}
+h2{
+    color: rgb(0, 6, 117);
+}
+p{
+    font-family: "Audiowide", sans-serif;
+}
+#botaoSair{
+    left: 10px;
+    top: 10px;
+    position: absolute;
+    width: 60px;
+    transition:  transform 0.5s ease;
+}
+#botaoSair:hover{
+    background-color: wheat;
+    border-radius: 10px;
+    padding: 10px;
+    transform: translateY(-5px);
+}
