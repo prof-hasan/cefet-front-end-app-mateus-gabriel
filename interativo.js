@@ -1,6 +1,8 @@
 const inimigoEl = document.querySelector(".inimigo");
+const voador = document.querySelector("#passaro");
 
-//-----------------------------------------------------personagem
+let pontos = Number(localStorage.getItem("pontos_atual")) || 0;
+//personagem
 const canvasPlayer = document.getElementById("player");
 const ctxPlayer = canvasPlayer.getContext("2d");
 
@@ -14,7 +16,7 @@ function desenharPlayer() {
 
     if (!skin) return;
 
-//------------------------------------------------------Corpo
+//Corpo
     ctxPlayer.fillStyle = skin.cor;
     ctxPlayer.fillRect(50, 100, 100, 100);
 
@@ -60,22 +62,26 @@ function loop() {
 }
 loop();
 
-//-----------------------------------tempo
+//tempo
 
-let dezSEl = document.querySelector('#dezS');
 let imagemFundo = document.querySelector('.principal');
 
  let nomeDaImagem = [
     'https://epicorpg.com.br/wp-content/uploads/2019/03/caverna-complexo.gif',
     'https://i.pinimg.com/originals/e8/99/f8/e899f8cc9ee082c8743abdfe7d66fa5b.gif',
+    'https://i.pinimg.com/originals/fb/9c/fb/fb9cfbeaee71936b8fe0f4e4d728ac18.gif', 
  ];
  function atualizarImagem(a){
   const caminhoDaImagem = nomeDaImagem[a];
   
   imagemFundo.style.backgroundImage = `url(${caminhoDaImagem})`;
+  imagemFundo.style.backgroundRepeat = "no-repeat";
+  imagemFundo.style.backgroundSize = "cover";
+  imagemFundo.style.backgroundPosition = "center";
 }
 
 function iniciarTimer() {
+    pontos = Number(localStorage.getItem("pontos_atual")) || 0;
     tempo = 0;
     document.getElementById("timer").textContent = `Tempo: 0s`;
 
@@ -83,24 +89,25 @@ function iniciarTimer() {
         tempo++;
         document.getElementById("timer").textContent = `Tempo: ${tempo}s`;
 
-        if (tempo === 5) document.documentElement.style.setProperty("--velocidade", "3.5s");
-        if (tempo === 10){ 
-            document.documentElement.style.setProperty("--velocidade", "3s");
-            dezSEl.style.backgroundColor = 'green';
-        }
-        if (tempo === 15) document.documentElement.style.setProperty("--velocidade", "2.5s");
-        if (tempo === 20){
-            document.documentElement.style.setProperty("--velocidade", "2s");
+        if (tempo === 16){ document.documentElement.style.setProperty("--velocidade", "2s")
+             atualizarImagem(0);
+            pontos++;
+            salvarPontuacao();
+            localStorage.setItem("pontos_atual", pontos);
+            
 
-            atualizarImagem(0);
             inimigoEl.src = 'https://art.ngfiles.com/comments/1055000/iu_1055299_8284187.gif';
             inimigoEl.style.width = "400px";
             inimigoEl.style.height = "300px";
             inimigoEl.style.bottom = "-100px";
             personagem.style.bottom = "-60px";
-        } 
-        if (tempo === 30){ document.documentElement.style.setProperty("--velocidade", "1.5s")
+        }
+        if (tempo === 28){ document.documentElement.style.setProperty("--velocidade", "1.5s")
             atualizarImagem(1);
+        pontos+=2;
+        salvarPontuacao();
+        localStorage.setItem("pontos_atual", pontos);
+        
 
             inimigoEl.src = 'https://i.pinimg.com/originals/66/03/ab/6603ab4db145ecb11873519ccc3d3055.gif';
 
@@ -108,7 +115,33 @@ function iniciarTimer() {
             inimigoEl.style.height = "300px";
             inimigoEl.style.bottom = "-50px";
         }
-        if (tempo === 60) document.documentElement.style.setProperty("--velocidade", "1s");
+        if (tempo === 40){ document.documentElement.style.setProperty("--velocidade", "1s");
+        atualizarImagem(2);
+        pontos+=3;
+        salvarPontuacao();
+        localStorage.setItem("pontos_atual", pontos);
+        
+        inimigoEl.src = 'https://i.pinimg.com/originals/fd/9f/05/fd9f054d689fe704def84b14fba3d202.gif';
+        inimigoEl.style.transform = "scaleX(-1)";
+
+        voador.src = 'https://cdna.artstation.com/p/assets/images/images/070/262/404/original/paulo-cardoso-nave-1-upadona-artstation1.gif?1702128532';
+        voador.style.transform = "scaleX(-1)";
+        }
+         if (tempo === 60){
+        pontos+=4;
+        salvarPontuacao();
+        localStorage.setItem("pontos_atual", pontos);
+    }
+    if (tempo === 100){
+        pontos+=6;
+        salvarPontuacao();
+        localStorage.setItem("pontos_atual", pontos);
+    }
+    if (tempo === 150){
+        pontos+=20;
+        salvarPontuacao();
+        localStorage.setItem("pontos_atual", pontos);
+    }
     }, 1000);
 }
 
@@ -116,8 +149,27 @@ function pararTimer() {
     clearInterval(tempoInterval);
 }
 
-//---------------------------morte
+//morte
+function salvarPontuacao() {
+    let usuarioAtual = localStorage.getItem("usuario_atual");
+
+    if (!usuarioAtual) return; 
+
+    let contas = JSON.parse(localStorage.getItem("contas")) || {};
+
+    if (!contas[usuarioAtual]) return;
+
+    contas[usuarioAtual].pontos = pontos;
+
+   localStorage.setItem("contas", JSON.stringify(contas));
+localStorage.setItem("pontos_atual", pontos);
+}
+
+
+
 function morreu(){
+      salvarPontuacao();
+    
     document.body.innerHTML = `<p>Você sobreviveu ${tempo} segundos!</p>`;
     document.body.style.display = "block";
     document.body.style.textAlign = "center";
@@ -140,6 +192,7 @@ function morreu(){
     document.body.appendChild(botao);
 
     botao.addEventListener("click", function(){
+
         location.href = "lobby.html";
     });
 }
@@ -148,15 +201,17 @@ setInterval(() => {
     if (!jogoAtivo) return;
 
     const inimigoLeft = inimigoEl.offsetLeft;
+    const playerBottom = parseInt(getComputedStyle(canvasPlayer).bottom);
 
-    if (inimigoLeft <= 150 && inimigoLeft > 50 && alturaPulo < 30) {
+    const ColisaoX = 100; 
+    const ColisaoY = 80;
+
+ if (inimigoLeft <= ColisaoX && inimigoLeft > 40 && playerBottom < ColisaoY) {
+
         jogoAtivo = false;
         pararTimer();
-        jogoAtivo = false;
-
         morreu();
     }
-
 }, 10);
 
 document.addEventListener("keydown", (e) => {
@@ -179,17 +234,4 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-setInterval(() => {
-    if (!jogoAtivo) return;
 
-    const inimigoLeft = inimigoEl.offsetLeft;
-    const playerBottom = parseInt(getComputedStyle(canvasPlayer).bottom);
-
-    if (inimigoLeft <= 60 && inimigoLeft > 50 && playerBottom < 100) {
-        jogoAtivo = false;
-        pararTimer();
-
-        morreu();
-    }
-
-}, 10); 

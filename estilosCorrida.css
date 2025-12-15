@@ -3,7 +3,7 @@ html{
 }
 
 body{
-      background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -63,15 +63,16 @@ body{
         right: 200%;
     }
 }
-#arvore{
+#animal{
     position: absolute;
-    bottom: -20px;
-    width: 500px;
-    height: 600px;
-    animation: arvore-animaçao 100s infinite linear;
+    bottom: 580px;
+    width: 100px;
+    height: 200px;
+    animation: animal-animaçao 100s infinite linear;
+    transform: scaleX(-1);
 }
 
-@keyframes arvore-animaçao{ 
+@keyframes animal-animaçao{ 
     from{
         right: -10000px;
     }
@@ -116,7 +117,7 @@ body{
   background: gray; 
   padding: 12px;   
   border-radius: 5px;  
-  top: 20px;
+  top: 200px;
   text-shadow: 1px 1px 1px green;
 }
 #rodape-sala-jogos{

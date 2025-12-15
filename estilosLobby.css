@@ -17,23 +17,6 @@ body{
     z-index: 1;
 }
 
-#botaoConquistas{
-    width: 70px;
-    position: fixed;
-    top: 140px;   
-    left: 10px;
-    transition: transform 0.2s ease;
-    background-color: #ffdcaa8d;
-    border-radius: 50px;
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
-    padding: 10px;
-}
-#botaoConquistas:hover{
-    transform: translateY(15px);
-    background-color: rgb(255, 212, 133);
-}
-
-
 #botaoCorrida{
     width: 300px;
     position: fixed;
@@ -93,8 +76,14 @@ body{
     background-color: rgb(143, 143, 255);
 }
 
+.ptp{
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+}
 
-/*---------------MENU--------------------------*/
+/*MENU*/
 #menu-configuracoes{
     position: fixed;
     top: 0;
@@ -190,15 +179,15 @@ a.opcoes-menu:active{
     #botaoAudio{
         margin-top: 50px;
         padding-right: 20;
-        width: 300px;
+        width: 250px;
         height: 100px;
-        border-radius: 40px;
-        transition: transform 0.5s ease;
+        border-radius: 1px 1px 1px white;
+        border: solid 1px black;
         box-shadow: 2px 2px 2px black;
     }
     #botaoAudio:hover{
-        transform: translateY(15px);
-        box-shadow: 5px 5px 5px black;
+        background-color: rgb(205, 254, 254);
+        box-shadow: 3px 3px 3px black;
     }
 
     #textoBotaoAudio{
@@ -210,3 +199,21 @@ a.opcoes-menu:active{
         background: linear-gradient(blue, rgb(108, 108, 255), rgb(0, 251, 255));
         color: gold;
     }
+
+#botaoRanking{
+   margin-top: 40px;
+   margin-bottom: 40px;
+   bottom: 280px;
+   left: 20px;
+   width: 100px;
+   border: solid 1px black;
+   padding: 10px;
+   box-shadow: 1px 1px 1px white;
+   border-radius: 3px;  
+}
+#botaoRanking:hover{
+    background-color: gold;
+}
+#botaoRanking:active{
+    background-color: yellow;
+}

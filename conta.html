@@ -1,45 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MINHA-CONTA</title>
+    <title>Sistema de Contas</title>
 
-    <link rel="stylesheet" href="estilosPersonaliza.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Nabla&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Syne+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Syne+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="conta.css">
 </head>
 <body>
-    <a href="LOBBY.html">
-                <img src="https://cdn-icons-png.flaticon.com/512/182/182448.png" alt="loja" id="botaoSair">
+     <a href="LOBBY.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/182/182448.png" alt="BotaoSair" id="botaoSair">
         </a>
 
-     <h1>Personalize seu personagem</h1>
+    <h1>Criar Conta</h1>
 
-    <article id="caixaPersonaliza">
-     <section id="escolhaCorRosto">
-     <div>
-        <label>Humor:</label>
-        <select id="rosto">
-        <option value="feliz">FELIZ</option>
-        <option value="triste">TRISTE</option>
-        <option value="apaixonado">PAIXAO</option>
-        </select>
-     </div>
+    <div class="LoginCriarConta">
+    <input type="text" id="cadNome" placeholder="Nome"><br>
+    <input type="password" id="cadSenha" placeholder="Senha"><br>
+    <button id="btnCadastrar">Cadastrar</button>
+    </div>
 
-     <div>
-        <label>Cor</label>
-        <input type="color" id="cor" value="#00ffff">
-     </div>
-     </section>
+    <hr>
 
-     <canvas id="canvas" width="200" height="200"></canvas>
-     </article>
+    <h1>Login</h1>
 
-    <button id="salvar">Salvar</button>
+    <div class="LoginCriarConta">
+    <input type="text" id="loginNome" placeholder="Nome"><br>
+    <input type="password" id="loginSenha" placeholder="Senha"><br>
+    <button id="btnLogin">Entrar</button>
+    </div>
 
-    <script src="personaliza.js"></script>
+    <script src="conta.js"></script>
+    <script src="interativo.js"></script>
 </body>
 </html>

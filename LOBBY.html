@@ -16,28 +16,34 @@
 
 </head>
 <body>
-<h1 id="nomeJogo">QUADRADO</h1>
+<h1 id="nomeJogo">BlockRun</h1>
      <article>
 
         <section id="menu">
            <nav id="menu-configuracoes">
     
-                        <a href="conta.html" class="opcoes-menu">Minha conta</a>
+                        <a href="conta.html" class="opcoes-menu">Acessar conta</a>
                    
                             <button id="botaoAudio">
                                 <p id="textoBotaoAudio">&#x1F60C Relaxar &#x1F60C</p>
                             </button>
+
+                             <a href="ranking.html">
+            <img src="https://images.vexels.com/media/users/3/153916/isolated/preview/c10e8d00b250c7051474d6b4c08ee3a6-icone-de-traco-colorido-do-trofeu-de-esportes.png" alt="botaoRanking" id="botaoRanking">
+        </a>
+
+        <a href="itens_opcionais.html" class="opcoes-menu">itens_opcionais</a>
 
                             <audio id="musica" src="april-8th-2025-creek-water-325031.mp3"></audio>
            </nav>
 
             <span id="alterna-menu" class="engrenagem">☰</span>
 
-
             <a href="personaliza.html">
                 <img src="https://images.vexels.com/media/users/3/160920/isolated/preview/bd0e3ee2f926ecc4911e88eec371c21c-paleta-de-cores-de-pintura-plana.png" alt="pincel" id="botaoPersonaliza">
                 </a>    
         </section>
+
 
 
         <section id="botoes-jogos">
@@ -46,15 +52,13 @@
             <img src="https://cdn-icons-png.freepik.com/256/5357/5357938.png?semt=ais_white_label" alt="corrida" id="botaoCorrida">
            </a>
 
-           <a href="conquistas.html">
-            <img src="https://cdn-icons-png.flaticon.com/512/833/833408.png" id="botaoConquistas">
-           </a>
-
-           
+           <canvas id="player" class="ptp" width="200" height="200"></canvas>
         </section>
     </article>
-    
 
+    <audio id="esterEgg" src="game-start-317318.mp3"></audio>
+    
+    <script src="https://cdn.jsdelivr.net/npm/cheet.js@0.3.3/cheet.min.js"></script>
     <script src="interativo.js"></script>
     <script src="menu.js"></script>
 </body>

@@ -7,7 +7,7 @@ engrenagem.addEventListener('click', function(){
 });
 
 
-/*-----------------MUSICA------------------------*/
+//MUSICA
 let somEl = document.querySelector('#botaoAudio');
 let musicaEl = document.querySelector('#musica');
 
@@ -19,4 +19,12 @@ somEl.addEventListener('click', function(){
     }else{
         musicaEl.pause();
     }
+});
+
+//Ester egg
+let eggEl = document.querySelector("#esterEgg");
+
+cheet('a a a', function(){
+    eggEl.currentTime = 0;
+    eggEl.play();
 });
